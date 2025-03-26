@@ -6,7 +6,14 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 
 import apiRoutes from "./backend/routes/index.route.js";
-import pages from "./client/routes/page.routes.js";
+import authPages from "./client/routes/auth.routes.js";
+
+// https://stackoverflow.com/questions/64383909/dirname-is-not-defined-error-in-node-js-14-version
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const hbs = exphbs.create({
@@ -17,7 +24,7 @@ const PORT = isDev ? 8081 : process.env.PORT;
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-app.set("views", __dirname + "/client/views");
+app.set("views", path.join(__dirname, "client/views"));
 
 // middleware
 app.use(bodyParser.json());
@@ -31,6 +38,9 @@ app.use(express.static(path.join(__dirname, "client/public"))); //
 
 // API routes under current version
 app.use("/api/v1", apiRoutes);
+
+// pages
+app.use("/", authPages);
 
 app.get("/test", async (req, res, next) => {
   res.json({
