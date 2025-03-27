@@ -1,6 +1,6 @@
 import express from "express";
-import authRoutes from "./auth.routes.js";
-import protectedRoutes from "./protected.routes.js";
+import authRoutes from "./auth.page.routes.js";
+import protectedRoutes from "./protected.page.routes.js";
 
 const router = express.Router();
 
