@@ -37,7 +37,7 @@ export const upsertUser = async (user) => {
     const {
       password,
       email,
-      needsEmailConfirmation = false,
+      needsEmailConfirmation = true,
       confirmationToken = null,
     } = user;
 

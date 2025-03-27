@@ -1,5 +1,5 @@
 import express from "express";
-import { loginUser } from "../controllers/auth.controller.js";
+import { loginUser, createUser } from "../controllers/auth.controller.js";
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
@@ -14,7 +14,34 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    res.status(200).json({ error: true, statusCode: "200", message: null });
+    res.status(200).json({ error: false, statusCode: "200", message: null });
+    return;
+  } catch (err) {
+    res.status(500).json({ error: true, statusCode: "500", message: err });
+    return;
+  }
+});
+
+router.post("/create-account", async (req, res) => {
+  const { password, email } = req.body;
+
+  try {
+    const response = await createUser(email, password);
+    if (response.error) {
+      if (response.status === 409) {
+        res
+          .status(409)
+          .json({ error: true, statusCode: "409", message: response.message });
+        return;
+      }
+
+      res
+        .status(400)
+        .json({ error: true, statusCode: "400", message: response.message });
+      return;
+    }
+
+    res.status(200).json({ error: false, statusCode: "200", message: null });
     return;
   } catch (err) {
     res.status(500).json({ error: true, statusCode: "500", message: err });

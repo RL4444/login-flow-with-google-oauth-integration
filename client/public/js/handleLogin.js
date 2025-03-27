@@ -22,7 +22,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     body: JSON.stringify(payload),
   });
 
-  const response = result.json();
+  const response = await result.json();
 
   if (response.error) {
     // handle it
@@ -44,12 +44,10 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
 document.getElementById("password").addEventListener("change", (e) => {
   // reset validation warnings
-  console.log(`${e.target} is changing via event listener`);
   formFeedback.innerText = "";
 });
 
 document.getElementById("email").addEventListener("change", (e) => {
   // reset validation warnings
-  console.log(`${e.target} is changing via event listener`);
   formFeedback.innerText = "";
 });
