@@ -9,6 +9,7 @@ export const loginUser = async (email, password) => {
     return {
       error: false,
       message: null,
+      data: user.data,
     };
   } else {
     return {
@@ -36,6 +37,7 @@ export const createUser = async (email, password) => {
         error: false,
         message: null,
         status: 200,
+        data: newUser.data,
       };
     }
   } catch (err) {

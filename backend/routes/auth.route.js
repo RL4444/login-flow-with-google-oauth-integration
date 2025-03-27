@@ -1,5 +1,6 @@
 import express from "express";
 import { loginUser, createUser } from "../controllers/auth.controller.js";
+import { issueJWT } from "../utils/jwt.js";
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
@@ -14,7 +15,16 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    res.status(200).json({ error: false, statusCode: "200", message: null });
+    res.cookie("bearer", await issueJWT(response.data), {
+      maxAge: 900000,
+      httpOnly: true,
+    });
+    res.status(200).json({
+      error: false,
+      statusCode: "200",
+      message: null,
+      token: issueJWT(response.data),
+    });
     return;
   } catch (err) {
     res.status(500).json({ error: true, statusCode: "500", message: err });
@@ -41,7 +51,16 @@ router.post("/create-account", async (req, res) => {
       return;
     }
 
-    res.status(200).json({ error: false, statusCode: "200", message: null });
+    res.cookie("bearer", await issueJWT(response.data), {
+      maxAge: 900000,
+      httpOnly: true,
+    });
+    res.status(200).json({
+      error: false,
+      statusCode: "200",
+      message: null,
+      token: issueJWT(response.data),
+    });
     return;
   } catch (err) {
     res.status(500).json({ error: true, statusCode: "500", message: err });
