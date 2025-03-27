@@ -4,7 +4,17 @@ import handleErr from "../utils/index.js";
 
 export const getUser = async (userId) => {
   try {
-    const user = await User.findOne(userId);
+    const user = await User.findOne({ where: { id: userId } });
+    return { data: user, error: false, message: null };
+  } catch (error) {
+    const payload = handleErr(error);
+    return payload;
+  }
+};
+
+export const getUserByEmail = async (email) => {
+  try {
+    const user = await User.findOne({ where: { email } });
     return { data: user, error: false, message: null };
   } catch (error) {
     const payload = handleErr(error);

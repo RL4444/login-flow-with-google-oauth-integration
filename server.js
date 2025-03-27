@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 
 import apiRoutes from "./backend/routes/index.route.js";
-import authPages from "./client/routes/auth.routes.js";
+import pages from "./client/routes/index.routes.js";
 
 // https://stackoverflow.com/questions/64383909/dirname-is-not-defined-error-in-node-js-14-version
 import { fileURLToPath } from "url";
@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, "client/public"))); //
 app.use("/api/v1", apiRoutes);
 
 // pages
-app.use("/", authPages);
+app.use("/", pages);
 
 app.get("/test", async (req, res, next) => {
   res.json({
