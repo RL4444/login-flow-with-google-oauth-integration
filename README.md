@@ -38,4 +38,4 @@ https://sequelize.org/docs/v6/other-topics/migrations/
 3. Create Test Users vie `npm run create:test:users`
 4. Start server with Nodemon's hot reload `npm run dev`
 
-![Sign Up Page](./signup.jpg)
+![Sign Up Page](./signup.png)
