@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "npm run build:css && node server.js",
+    "dev": "npm run build:css && nodemon server.js",
     "create:test:users": "node createTestUsers.js",
     "build:css": "postcss ./client/public/tailwindStyles.css -o ./client/public/style.css",
     "watch:css": "postcss ./client/public/tailwindStyles.css -o ./client/public/style.css --watch"
