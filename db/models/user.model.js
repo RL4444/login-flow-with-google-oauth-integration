@@ -14,7 +14,7 @@ export const User = sequelize.define("user", {
     type: DataTypes.STRING,
   },
   password: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.STRING,
   },
   needsEmailConfirmation: {
@@ -25,5 +25,10 @@ export const User = sequelize.define("user", {
   confirmationToken: {
     allowNull: true,
     type: DataTypes.STRING,
+  },
+  isGoogleAuth: {
+    allowNull: false,
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });

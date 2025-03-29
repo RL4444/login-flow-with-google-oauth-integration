@@ -2,3 +2,4 @@
 .env
 sandbox.js
 dboutput.json
+config.google.json

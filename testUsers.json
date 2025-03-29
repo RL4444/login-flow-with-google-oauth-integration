@@ -1,0 +1,28 @@
+{
+  "the following users have been placed in your db with their passwords encrypted": [
+    {
+      "email": "user1@gmail.com",
+      "password": "user1",
+      "needsEmailConfirmation": false,
+      "confirmationToken": null
+    },
+    {
+      "email": "user2@gmail.com",
+      "password": "user2",
+      "needsEmailConfirmation": false,
+      "confirmationToken": null
+    },
+    {
+      "email": "user3@gmail.com",
+      "password": "user3",
+      "needsEmailConfirmation": false,
+      "confirmationToken": null
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "user4",
+      "needsEmailConfirmation": false,
+      "confirmationToken": null
+    }
+  ]
+}

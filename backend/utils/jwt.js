@@ -7,7 +7,9 @@ const SECRET_KEY = process.env.JWT_SECRET;
 
 export const issueJWT = async (userInfo) => {
   const user = { ...userInfo };
-  delete user.password;
+  if (user.password) {
+    delete user.password;
+  }
 
   const token = jwt.sign({ user }, SECRET_KEY, {
     expiresIn: "6h",
